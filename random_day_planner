@@ -1,0 +1,140 @@
+from random import choice
+password = "BAGUL"
+enter = " "
+enter_count = 0
+enter_limit = 3
+wrong_enter = False
+
+while enter != password and not(wrong_enter):
+    if enter_count < enter_limit:
+        enter = input("Enter password(my name with upper cases): ")
+        enter_count += 1
+    else:
+        wrong_enter = True
+if  wrong_enter:
+    print("Wrong. Try again")
+    breakpoint()
+else:
+    print("True. Welcome here!")
+name = input("Your name is:")
+print("Hello", name, ". It may looks so simple, anyway, it is my first project. So, have a fun!")
+
+option = input(
+    "Select an option to play  1(mirror_game), 2(randomly chosen film/book/song ), 3(ask_question- just a little game:): "
+)
+
+
+
+def sentc_game():
+    adjective = input("Enter an adjective: ")
+    plural_noun = input("Enter a plural noun:")
+    celebrity = input("Enter a celebrity:")
+
+    print("When you smile, you look so " + adjective)
+    print(plural_noun + " make me feel better")
+    print("I'd love to meet " + celebrity)
+
+
+if option == "1":
+    print(sentc_game())
+
+
+def random_film():
+    films = ['Action', 'Comedy', 'Historic', 'Cartoon']
+    song = ['vivacious', 'Listen_while_studying',  'blue_songs' ]
+    books = ['Outliers', '1984', 'On küçük zenci : Agatha Christie', 'Arka sokaktaki cinayet : Agatha Christie', 'Aci kahve : Agatha Christie', 'Yaralasar : Agatha Christie', 'Frankenstein: Mary Shell']
+    you_wanna_do = input("Book(enter- b)), song (enter-s) or film (enter - f): ")
+    if you_wanna_do == "f":
+        chosen = input("Enter for Action(1), Comedy(2), Historic(3), Cartoon (4):")
+        Action = "Die Hard(1988)","Aliens (1986)", "Seven Samurai (1954)", "Police Story (1985)", "Wednesday"
+        Comedy = "Airplane! (1980)", "Coming to America (1988)", "The Jerk (1979)", "Young Frankenstein (1974)"
+        Historic = "Pianist (2001)", "Becket (1964)", "The Lion in Winter (1968)", "Titanic"
+        Cartoon ="Element", "Frozen", "Masha and bear", "Incredible family", "Avatar"
+        if chosen == "1":
+            print(choice(Action))
+        elif chosen == "2":
+            print(choice(Comedy))
+        elif chosen == "3":
+            print(choice(Historic))
+        elif chosen == "4":
+            print(choice(Cartoon))
+        else:
+            print("Invalid option")
+    elif you_wanna_do == "s":
+        chosen = input("Enter for sad_songs(1), listen_while_studying(2), vivacious(3):")
+        blue_songs = "Rewrite stars", "See you again", "Summertime sadness ", "Stay with me"
+        Listen_while_studying = "Cold heart : Elton John", "Daylight : David", "Only you: Xcho", "runaway : Aurora", "Dark Paradise : Lana Del Rey"
+        vivacious = ["Perfect: Anne Marie", "You do not even know me : Faouzia", "2002 : Anne Marie"]
+        if chosen == "1":
+            print(choice(blue_songs))
+        elif chosen == "2":
+            print(choice(Listen_while_studying))
+        elif chosen == "3":
+            print(choice(vivacious))
+        else:
+            print("Invalid option")
+    elif you_wanna_do == "b":
+        chosenn = input("Enter for Fiction(1), Non_Fiction(2), Detective(3):")
+        Fiction = "1984 : George Orwell", "Pride and Prejudice", "The Da Vinci Code", "War and Peace"
+        Non_Fiction = "Last train to Istanbul", "The Museum of Innocence", "Madonna in a Fur Coat", "The Forty Rules of Love"
+        Detective = "Murder on the Orient Express", "Gone Girl : Gillian Flynn", "The Adventures of Sherlock Holmes", "And Then There Were None"
+        if chosenn == "1":
+            print(choice(Fiction))
+        elif chosenn == "2":
+            print(choice(Non_Fiction))
+        elif chosenn == "3":
+            print(choice(Detective))
+        else:
+            print("Invalid option")
+
+if option == "2":
+    print(random_film())
+
+
+def ask_question():
+    questions = [
+        [
+            "The biggest country in the world?", "Russia", "China", "India", "US", 1
+        ],
+        [
+            "Who did give Statue of Liberty to US as a present?", "China", "Brasilia", "France", "Great Britain", 3
+        ],
+        [
+            "What is the most common surname in the United States?", "Smith", "George", "William", "Jack", 1
+        ]
+    ]
+
+    levels = [1, 2, 3, 4]
+    money = 0
+    for i in range(0, len(questions)):
+
+        question = questions[i]
+        print(f"{question[0]}")
+        print(f"Question for generalKnowledge. {levels[i]}")
+        print(f"a. {question[1]}               b.{question[2]}")
+        print(f"c. {question[3]}               d.{question[4]}")
+        reply = int(input("Enter your answer(1-4):"))
+        if (reply == 0):
+            money = levels[i - 1]
+            break
+        if (reply == question[-1]):
+            print(f" CORRECT ANSWER, generalKnowledge. {levels[i]} ")
+            money += levels[i]
+            if (i == 4):
+                money = 1
+            elif (i == 9):
+                money = 1
+            elif (i == 14):
+                money = 1
+        else:
+            print("Wrong answer!")
+
+    print(f" You have known {money} questions")
+
+
+if option == "3":
+    print(ask_question())
+
+
+
+
